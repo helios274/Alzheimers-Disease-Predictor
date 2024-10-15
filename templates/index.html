@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alzheimer's Disease Predictor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
+</head>
+
+<body>
+
+    <div class="form-container">
+        <a class="title" href="{{ url_for('index')}}">
+            <h1>Alzheimer's Disease Predictor</h1>
+        </a>
+
+        {% if prediction %}
+        <p class="result">There is a {{prediction}}% chance of Alzheimer's Disease</p>
+        {% endif %}
+
+        <form action="{{ url_for('index')}}" method="POST">
+
+            <!-- Age -->
+            <label for="age">Age:</label>
+            <input type="number" id="age" name="Age" min="0" max="100" required>
+            <small>Enter the age of the patient.</small>
+
+            <!-- BMI -->
+            <label for="bmi">Body Mass Index (BMI):</label>
+            <input type="number" id="bmi" name="BMI" step="0.01" min="15" max="40" required>
+            <small>BMI of the patient (Range: 15-40).</small>
+
+            <!-- Alcohol Consumption -->
+            <label for="alcohol-consumption">Weekly Alcohol Consumption:</label>
+            <input type="number" id="alcohol-consumption" name="AlcoholConsumption" step="0.01" min="0" max="20" required>
+            <small>Weekly alcohol consumption in units (Range: 0-20).</small>
+
+            <!-- Cholesterol Total -->
+            <label for="cholesterol-total">Total Cholesterol:</label>
+            <input type="number" id="cholesterol-total" name="CholesterolTotal" step="0.001" min="150" max="300" required>
+            <small>Total cholesterol level (Range: 150-300 mg/dL).</small>
+
+            <!-- Cholesterol LDL -->
+            <label for="cholesterol-ldl">LDL Cholesterol:</label>
+            <input type="number" id="cholesterol-ldl" name="CholesterolLDL" step="0.001" min="50" max="200" required>
+            <small>Low-density lipoprotein cholesterol level (Range: 50-200 mg/dL).</small>
+
+            <!-- Cholesterol HDL -->
+            <label for="cholesterol-hdl">HDL Cholesterol:</label>
+            <input type="number" id="cholesterol-hdl" name="CholesterolHDL" step="0.001" min="20" max="100" required>
+            <small>High-density lipoprotein cholesterol level (Range: 20-100 mg/dL).</small>
+
+            <!-- Cholesterol Triglycerides -->
+            <label for="cholesterol-triglycerides">Triglycerides Level:</label>
+            <input type="number" id="cholesterol-triglycerides" step="0.001" name="CholesterolTriglycerides" min="50" max="400" required>
+            <small>Triglycerides levels (Range: 50-400 mg/dL).</small>
+
+            <!-- Physical Activity -->
+            <label for="physical-activity">Weekly Physical Activity (Hours):</label>
+            <input type="number" id="physical-activity" name="PhysicalActivity" step="0.01" min="0" max="10" required>
+            <small>Enter weekly physical activity in hours (Range: 0-10 hours).</small>
+
+            <!-- Diet Quality -->
+            <label for="diet-quality">Diet Quality (Score):</label>
+            <input type="number" id="diet-quality" name="DietQuality" step="0.01" min="0" max="10" required>
+            <small>Diet quality score (Range: 0-10).</small>
+
+            <!-- Sleep Quality -->
+            <label for="sleep-quality">Sleep Quality (Score):</label>
+            <input type="number" id="sleep-quality" name="SleepQuality" step="0.01" min="4" max="10" required>
+            <small>Sleep quality score (Range: 4-10).</small>
+
+            <!-- MMSE -->
+            <label for="mmse">MMSE (Mini-Mental State Examination):</label>
+            <input type="number" id="mmse" name="MMSE" step="0.01" min="0" max="30" required>
+            <small>MMSE score (Range: 0-30). Lower scores indicate cognitive impairment.</small>
+
+            <!-- Functional Assessment -->
+            <label for="functional-assessment">Functional Assessment:</label>
+            <input type="number" id="functional-assessment" name="FunctionalAssessment" step="0.01" min="0" max="10" required>
+            <small>Functional assessment score (Range: 0-10). Lower scores indicate greater impairment.</small>
+
+            <!-- ADL -->
+            <label for="adl">ADL (Activities of Daily Living):</label>
+            <input type="number" id="adl" name="ADL" step="0.001" min="0" max="10" required>
+            <small>ADL score (Range: 0-10). Lower scores indicate greater impairment.</small>
+
+            <!-- Memory Complaints -->
+            <fieldset>
+                <legend>Memory Complaints:</legend>
+                <div class="radio-group">
+                    <label><input type="radio" name="MemoryComplaints" value="0" required>No</label>
+                    <label><input type="radio" name="MemoryComplaints" value="1" required>Yes</label>
+                </div>
+                <small>Presence of memory complaints.</small>
+            </fieldset>
+
+            <!-- Behavioral Problems -->
+            <fieldset>
+                <legend>Behavioral Problems:</legend>
+                <div class="radio-group">
+                    <label><input type="radio" name="BehavioralProblems" value="0" required>No</label>
+                    <label><input type="radio" name="BehavioralProblems" value="1" required>Yes</label>
+                </div>
+
+                <small>Presence of behavioral problems.</small>
+            </fieldset>
+
+            <!-- Submit Button -->
+            <button type="submit">Submit Data</button>
+        </form>
+    </div>
+
+</body>
+
+</html>
