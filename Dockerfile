@@ -1,8 +1,9 @@
 # Dockerfile
-FROM python:3.12.7-alpine
+FROM python:3.12.7-bookworm
+
 # Allow statements and log messages to immediately appear in the logs
 ENV PYTHONUNBUFFERED True
-# Copy local code to the container image.
+
 WORKDIR /web-app
 COPY . .
 
