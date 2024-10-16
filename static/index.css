@@ -100,3 +100,29 @@ button:hover {
   text-decoration: none;
   color: #340f3d;
 }
+
+.btn-container {
+  display: flex;
+  justify-content: center;
+}
+
+.clear-btn {
+  text-decoration: none;
+  background-color: #ff4d4d;
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.clear-btn:hover {
+  background-color: #e60000;
+}
+
+.clear-btn:active {
+  background-color: #cc0000;
+}

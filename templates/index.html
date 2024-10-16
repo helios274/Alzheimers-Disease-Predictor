@@ -17,73 +17,77 @@
 
         {% if prediction %}
         <p class="result">There is a {{prediction}}% chance of Alzheimer's Disease</p>
+        <div class="btn-container">
+            <a href="{{ url_for('index')}}" type="button" class="clear-btn" id="clearBtn">Clear</a>
+        </div>
         {% endif %}
 
-        <form action="{{ url_for('index')}}" method="POST">
+        <form action="{{ url_for('index')}}" method="POST" id="data-form">
 
             <!-- Age -->
             <label for="age">Age:</label>
-            <input type="number" id="age" name="Age" min="0" max="100" required>
+            <input type="number" id="age" name="Age" min="0" max="100" required {% if data %} value="{{ data.Age }}" {% endif %}>
             <small>Enter the age of the patient.</small>
 
             <!-- BMI -->
             <label for="bmi">Body Mass Index (BMI):</label>
-            <input type="number" id="bmi" name="BMI" step="0.01" min="15" max="40" required>
+            <input type="number" id="bmi" name="BMI" step="0.01" min="15" max="40" required {% if data %} value="{{ data.BMI }}" {% endif %}>
             <small>BMI of the patient (Range: 15-40).</small>
 
             <!-- Alcohol Consumption -->
             <label for="alcohol-consumption">Weekly Alcohol Consumption:</label>
-            <input type="number" id="alcohol-consumption" name="AlcoholConsumption" step="0.01" min="0" max="20" required>
+            <input type="number" id="alcohol-consumption" name="AlcoholConsumption" step="0.01" min="0" max="20" required {% if data %} value="{{ data.AlcoholConsumption }}" {% endif %}>
             <small>Weekly alcohol consumption in units (Range: 0-20).</small>
 
             <!-- Cholesterol Total -->
             <label for="cholesterol-total">Total Cholesterol:</label>
-            <input type="number" id="cholesterol-total" name="CholesterolTotal" step="0.001" min="150" max="300" required>
+            <input type="number" id="cholesterol-total" name="CholesterolTotal" step="0.001" min="150" max="300" required {% if data %} value="{{ data.CholesterolTotal }}" {% endif %}>
             <small>Total cholesterol level (Range: 150-300 mg/dL).</small>
 
             <!-- Cholesterol LDL -->
             <label for="cholesterol-ldl">LDL Cholesterol:</label>
-            <input type="number" id="cholesterol-ldl" name="CholesterolLDL" step="0.001" min="50" max="200" required>
+            <input type="number" id="cholesterol-ldl" name="CholesterolLDL" step="0.001" min="50" max="200" required {% if data %} value="{{ data.CholesterolLDL }}" {% endif %}>
             <small>Low-density lipoprotein cholesterol level (Range: 50-200 mg/dL).</small>
 
             <!-- Cholesterol HDL -->
             <label for="cholesterol-hdl">HDL Cholesterol:</label>
-            <input type="number" id="cholesterol-hdl" name="CholesterolHDL" step="0.001" min="20" max="100" required>
+            <input type="number" id="cholesterol-hdl" name="CholesterolHDL" step="0.001" min="20" max="100" required {% if data %} value="{{ data.CholesterolHDL }}" {% endif %}>
             <small>High-density lipoprotein cholesterol level (Range: 20-100 mg/dL).</small>
 
             <!-- Cholesterol Triglycerides -->
             <label for="cholesterol-triglycerides">Triglycerides Level:</label>
-            <input type="number" id="cholesterol-triglycerides" step="0.001" name="CholesterolTriglycerides" min="50" max="400" required>
+            <input type="number" id="cholesterol-triglycerides" step="0.001" name="CholesterolTriglycerides" min="50" max="400" required {% if data %} value="{{ data.CholesterolTriglycerides }}" {%
+                endif %}>
             <small>Triglycerides levels (Range: 50-400 mg/dL).</small>
 
             <!-- Physical Activity -->
             <label for="physical-activity">Weekly Physical Activity (Hours):</label>
-            <input type="number" id="physical-activity" name="PhysicalActivity" step="0.01" min="0" max="10" required>
+            <input type="number" id="physical-activity" name="PhysicalActivity" step="0.01" min="0" max="10" required {% if data %} value="{{ data.PhysicalActivity }}" {% endif %}>
             <small>Enter weekly physical activity in hours (Range: 0-10 hours).</small>
 
             <!-- Diet Quality -->
             <label for="diet-quality">Diet Quality (Score):</label>
-            <input type="number" id="diet-quality" name="DietQuality" step="0.01" min="0" max="10" required>
+            <input type="number" id="diet-quality" name="DietQuality" step="0.01" min="0" max="10" required {% if data %} value="{{ data.DietQuality }}" {% endif %}>
             <small>Diet quality score (Range: 0-10).</small>
 
             <!-- Sleep Quality -->
             <label for="sleep-quality">Sleep Quality (Score):</label>
-            <input type="number" id="sleep-quality" name="SleepQuality" step="0.01" min="4" max="10" required>
+            <input type="number" id="sleep-quality" name="SleepQuality" step="0.01" min="4" max="10" required {% if data %} value="{{ data.SleepQuality }}" {% endif %}>
             <small>Sleep quality score (Range: 4-10).</small>
 
             <!-- MMSE -->
             <label for="mmse">MMSE (Mini-Mental State Examination):</label>
-            <input type="number" id="mmse" name="MMSE" step="0.01" min="0" max="30" required>
+            <input type="number" id="mmse" name="MMSE" step="0.01" min="0" max="30" required {% if data %} value="{{ data.MMSE }}" {% endif %}>
             <small>MMSE score (Range: 0-30). Lower scores indicate cognitive impairment.</small>
 
             <!-- Functional Assessment -->
             <label for="functional-assessment">Functional Assessment:</label>
-            <input type="number" id="functional-assessment" name="FunctionalAssessment" step="0.01" min="0" max="10" required>
+            <input type="number" id="functional-assessment" name="FunctionalAssessment" step="0.01" min="0" max="10" required {% if data %} value="{{ data.FunctionalAssessment }}" {% endif %}>
             <small>Functional assessment score (Range: 0-10). Lower scores indicate greater impairment.</small>
 
             <!-- ADL -->
             <label for="adl">ADL (Activities of Daily Living):</label>
-            <input type="number" id="adl" name="ADL" step="0.001" min="0" max="10" required>
+            <input type="number" id="adl" name="ADL" step="0.001" min="0" max="10" required {% if data %} value="{{ data.ADL }}" {% endif %}>
             <small>ADL score (Range: 0-10). Lower scores indicate greater impairment.</small>
 
             <!-- Memory Complaints -->

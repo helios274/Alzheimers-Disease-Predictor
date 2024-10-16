@@ -12,7 +12,7 @@ def index():
         data = request.form
         prediction = make_prediction(data)
 
-        return render_template('index.html', prediction=prediction)
+        return render_template('index.html', prediction=prediction, data=data)
 
 
 if __name__ == '__main__':
