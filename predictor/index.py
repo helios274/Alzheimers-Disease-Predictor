@@ -1,4 +1,3 @@
-import os
 import pickle
 import numpy as np
 
@@ -8,7 +7,7 @@ features = ['Age', 'BMI', 'AlcoholConsumption', 'CholesterolTotal',
             'PhysicalActivity', 'DietQuality', 'SleepQuality', 'MMSE',
             'FunctionalAssessment', 'ADL', 'MemoryComplaints', 'BehavioralProblems']
 
-print(os.getcwd())
+
 with open('predictor/models/model_gbc_v2-3.pkl', 'rb') as file:
     model = pickle.load(file)
 
